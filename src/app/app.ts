@@ -1,12 +1,24 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+//Importa la Clase Router que permite la navegacion programatica entre rutas, y RouterModule 
+//modulo de enrutamiento necesario para menejar rutas dentro del componente Standalone
+import { Router, RouterModule } from '@angular/router';
+import { TableUser } from "./components/table-user/table-user";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterModule, TableUser],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'labRutas';
+  protected title = 'Testing Module Route';
+
+  //Constructor que inyecta el servicio Router para usarlo en la navegacion
+  constructor(private router: Router){}
+
+  //Metodo publico que recibe string y navega a la ruta correspondiente
+  irAPagina(pagina: string){
+    this.router.navigate([pagina]);
+  }
 }
