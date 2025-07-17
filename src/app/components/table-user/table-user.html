@@ -17,12 +17,7 @@
       <tbody class="bg-white divide-y divide-gray-200">
         <tr *ngFor="let usuario of usuarios" class="hover:bg-gray-100">
           <td class="px-4 py-2">
-            
-              
-              class="text-blue-600 hover:underline"
-            >
-              {{usuario.nombre}}
-            
+            <a [routerLink]="['/detalleUsuario', usuario.correo]" class="text-blue-600 hover:underline">{{usuario.nombre}}</a>
           </td>
           <td class="px-4 py-2">
             <span *ngIf="usuario.perfil ==='Administrador'; else sinPermiso">
